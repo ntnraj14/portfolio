@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
 import './globals.css'
+
+import { PrimeReactProvider } from 'primereact/api';
 
 import Header from './_components/header/header';
 import Menu from './_components/menu/menu';
@@ -19,11 +21,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-      <Header/>
-      <Menu/>
-        {children}
-      </body>
+      <PrimeReactProvider> 
+        <head>
+          <link id="theme-link" rel="stylesheet" href="/themes/lara-light-blue/theme.css" />
+        </head>
+        <body className={inter.className}>
+        <Header/>
+        <Menu/>
+          {children}
+        </body>
+      </PrimeReactProvider>
     </html>
   )
 }

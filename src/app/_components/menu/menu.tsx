@@ -50,5 +50,5 @@ export default function Menu() {
     setActiveIndex(pathsIndex[slicedPath as keyof typeof pathsIndex])
   }, [activePath]);
   
-  return <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}/>;
+  return <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} className="text-sm sm:text-base"/>;
 }

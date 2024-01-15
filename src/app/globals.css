@@ -1,13 +1,7 @@
 /* @tailwind base; */
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
 
-@import 'primereact/resources/themes/lara-light-cyan/theme.css';
 @import 'primeflex/primeflex.css';
 @import 'primeicons/primeicons.css';
 @import 'primereact/resources/primereact.css';
-
-body {
-  background: white;
-}
- 

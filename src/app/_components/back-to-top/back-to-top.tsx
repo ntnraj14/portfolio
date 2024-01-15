@@ -26,7 +26,7 @@ export default function BackToTop () {
       }
 
     return (
-        <div ref={backToTopElementRef} onClick={handleScrollToTopClick} className="progress-circle-container text-cyan-blue absolute bottom-10 right-20">
+        <div ref={backToTopElementRef} onClick={handleScrollToTopClick} className="progress-circle-container text-primary-color absolute sm:bottom-10 sm:right-20 bottom-10 right-10">
             <span><i className="pi pi-chevron-circle-up" style={{ fontSize: '2.5rem' }}></i></span>
         </div>
     )

@@ -13,12 +13,12 @@ export default function About() {
     }
   
     return (
-        <div className="ml-4 w-1/2 mt-5">
+        <div className="ml-4 sm:w-1/2 w-11/12 mt-5">
             My name is Nitin Rajput, and this space is a curated collection of my creative journey, projects, and achievements.
             <p>Whether you're an employer, a collaborator, or simply an enthusiast exploring, I invite you to delve into my work. Feel free to roam around, explore my projects, 
                 and get a glimpse of what drives my enthusiasm.</p>
             <p>Thank you for visiting. If you have any questions, collaboration ideas, or just want to say hello, I'm only a <b 
-            className="text-cyan-blue cursor-pointer" onClick={() => contactMe()}>
+            className="text-primary-color cursor-pointer" onClick={() => contactMe()}>
                 click away!</b>
                 </p>
         </div>

@@ -1,6 +1,5 @@
 'use client'
 
-import { PrimeReactProvider } from 'primereact/api';
 import { Carousel } from 'primereact/carousel';
 
 import React, { useState } from 'react';
@@ -19,9 +18,9 @@ export default function Home() {
 
   const productTemplate = (product: Tproduct) => {
       return (
-          <div className="border-1 surface-border border-round m-2 text-center">
+          <div className="text-center">
               <div>
-                  <Image src={product.image} alt={product.name} className="shadow-2" width="400" height="400" />
+                  <Image src={product.image} alt={product.name} className="shadow-2 w-10/12 sm:w-3/4 h-1/2" width="400" height="400" />
               </div>
           </div>
       );
@@ -34,15 +33,13 @@ export default function Home() {
   return (
     <div>
         <ProgressBarLinear></ProgressBarLinear>
-        <div  className='flex'>
-            <PrimeReactProvider>    
-                <Carousel value={products} numVisible={1} numScroll={1} className="custom-carousel w-1/4 h-1/4" circular
+        <div className='sm:flex mt-4'>
+            <Carousel value={products} numVisible={1} numScroll={1} className="custom-carousel sm:w-1/4 sm:h-1/4" circular
                 autoplayInterval={5000} itemTemplate={productTemplate} showNavigators={false} onPageChange={changeEvent}/>
-            </PrimeReactProvider>
             {products[imageIndex] && 
-                <div className='ml-5 my-auto'>
+                <div className='mx-4 my-auto'>
                     <div className='font-bold text-2xl'>{products[imageIndex]['name']}</div>
-                    <div className='mt-2 text-slate-500 w-1/2'>{products[imageIndex]['description']}</div>
+                    <div className='mt-2 text-slate-500 sm:w-1/2'>{products[imageIndex]['description']}</div>
                 </div>
             }
         </div>
