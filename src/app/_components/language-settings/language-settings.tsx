@@ -1,7 +1,13 @@
-import { Dropdown } from 'primereact/dropdown';
+'use client'
+
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-import { locale, addLocale, updateLocaleOption, updateLocaleOptions, localeOption, localeOptions } from 'primereact/api';
+import { Dropdown } from 'primereact/dropdown';
+
+import useTranslation from 'next-translate/useTranslation';
+
 
 type Language = {
     name: string;
@@ -10,38 +16,27 @@ type Language = {
 
 export default function LanguageSettings() {
 
-    const [selectedLanguage, setSelectedLanguage] = useState(null);
-    const countries = [
-        { name: 'English', code: 'en' },
-        { name: 'French', code: 'fr' }
+    const { t } = useTranslation('settings');
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const currentlLanguage = searchParams.get('lang');
+    let languages = [
+        { name: t('english'), code: 'en' },
+        { name: t('french'), code: 'fr' }
     ];
-
-    const selectedLanguageTemplate = (option: Language, props: any) => {
-        if (option) {
-            return (
-                <div className="flex align-items-center">
-                    <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} />
-                    <div>{option.name}</div>
-                </div>
-            );
-        }
-
-        return <span>{props.placeholder}</span>;
-    };
-
-    const languageOptionTemplate = (option: Language) => {
-        return (
-            <div className="flex align-items-center">
-                <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} />
-                <div>{option.name}</div>
-            </div>
-        );
-    };
+    const [selectedLanguage, setSelectedLanguage] = useState(getDefaultLanguage(currentlLanguage || ''));
 
     const updateSelectedLanguage = (e: any) => {
-       console.log(e)
-       setSelectedLanguage(e.value);
-       locale(e.value.code);
+       const language = getDefaultLanguage(e.value.code);
+       router.push(`settings?lang=${e.value.code}`);
+       setSelectedLanguage(language);
+    }
+
+    function getDefaultLanguage(langFromParams: string) {
+        const languageOptions = langFromParams === 'en' ? [{name: 'English', code: 'en'}, {name: 'French', code: 'fr'}] : [{name: 'Anglais', code: 'en'}, {name: 'Français', code: 'fr'}];
+        languages = languageOptions;
+        const userSelectedLanguage = languageOptions.filter(item => item.code === langFromParams);
+        return userSelectedLanguage[0];
     }
 
     return (
@@ -50,8 +45,8 @@ export default function LanguageSettings() {
             <div className='mb-4'>
                 Choosing your preferred language ensures that you can navigate, communicate, and engage with content in a way that feels most comfortable for you.
             </div>
-            <Dropdown value={selectedLanguage} onChange={(e) => updateSelectedLanguage(e)} options={countries} optionLabel="name" placeholder="Select a Language" 
-                filter valueTemplate={selectedLanguageTemplate} itemTemplate={languageOptionTemplate} className="w-full md:w-14rem" />
+            <Dropdown value={selectedLanguage} onChange={(e) => updateSelectedLanguage(e)} options={languages} optionLabel="name" placeholder="Select a Language" 
+                filter className="w-full md:w-14rem" />
         </>     
     )
 
