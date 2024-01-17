@@ -2,5 +2,11 @@
     "hi": "Hello world en",
 
     "english": "English",
-    "french": "French"
+    "french": "French",
+    "themeSettingsTitle": "Theme Settings",
+    "themeSettingsSubheading": "For a personalized experience, choose your preferred theme. Opt for a vibrant 'Light Theme' to illuminate your screen or dive into the depths of 'Dark Theme' for a more comfortable view.",
+    "languageSettingsTitle": "Language Settings",
+    "languageSettingsSubheading": "Choosing your preferred language ensures that you can navigate, communicate, and engage with content in a way that feels most comfortable for you.",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme"
   }

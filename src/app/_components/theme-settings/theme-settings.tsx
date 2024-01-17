@@ -5,19 +5,23 @@ import { RadioButton } from 'primereact/radiobutton';
 
 import { PrimeReactContext } from 'primereact/api';
 import { useContext } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function ThemeSettings() {
+
+    let primeContext = useContext(PrimeReactContext);
+    const { t } = useTranslation('settings');
 
     const radioBtns = [
         {
             id: 'light',
-            name: 'Light Theme',
+            name: t('lightTheme'),
             value: 'light',
             inputId: 'light' 
         },
         {
             id: 'dark',
-            name: 'Dark Theme',
+            name: t('darkTheme'),
             value: 'dark',
             inputId: 'dark'
         }
@@ -33,8 +37,6 @@ export default function ThemeSettings() {
         onSubmit: () => {}
     });
 
-    let primeContext = useContext(PrimeReactContext);
-
     const handleClick = (theme : string) => {
         const oldTheme = theme === 'dark' ? 'light' : 'dark';
         primeContext && primeContext.changeTheme && primeContext.changeTheme(`/themes/lara-${oldTheme}-blue/theme.css`, `/themes/lara-${theme}-blue/theme.css`, 'theme-link')
@@ -42,9 +44,9 @@ export default function ThemeSettings() {
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <h3>Theme Settings</h3>
-            <div className='mb-4'>For a personalized experience, choose your preferred theme. Opt for a vibrant 'Light Theme' to illuminate your screen or dive into the depths of 'Dark Theme' for a more comfortable view. </div>
-            <div className="grid grid-cols-2 grid-flow-col gap-5 sm:gap-12">                    
+            <h3>{t('themeSettingsTitle')}</h3>
+            <div className='mb-4'>{t('themeSettingsSubheading')}</div>
+            <div className="grid grid-cols-2 grid-flow-col gap-5 sm:gap-12 ml-1">                    
                 {radioBtns.map((btn) => {
                     return (
                         <div key={btn.value}>
@@ -86,7 +88,7 @@ export default function ThemeSettings() {
                                     </div>
                                 </div>
                             </div>
-                        </div>                            
+                        </div>
                     );
                 })}
             </div>

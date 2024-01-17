@@ -41,13 +41,11 @@ export default function LanguageSettings() {
 
     return (
         <>
-            <h3 className='mt-7'>Language Settings</h3>
-            <div className='mb-4'>
-                Choosing your preferred language ensures that you can navigate, communicate, and engage with content in a way that feels most comfortable for you.
-            </div>
+            <h3 className='mt-7'>{t('languageSettingsTitle')}</h3>
+            <div className='mb-4'>{t('languageSettingsSubheading')}</div>
             <Dropdown value={selectedLanguage} onChange={(e) => updateSelectedLanguage(e)} options={languages} optionLabel="name" placeholder="Select a Language" 
                 filter className="w-full md:w-14rem" />
-        </>     
+        </>
     )
 
 }

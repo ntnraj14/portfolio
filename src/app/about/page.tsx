@@ -1,8 +1,11 @@
 'use client'
 
+import useTranslation from 'next-translate/useTranslation';
 import { isUserUsingMobile }  from '../_lib/utilities';
 
 export default function About() {
+
+    const { t } = useTranslation('about');
 
     const contactMe = () => {
         if (!isUserUsingMobile()) {
@@ -13,14 +16,10 @@ export default function About() {
     }
   
     return (
-        <div className="ml-4 sm:w-1/2 w-11/12 mt-5">
-            My name is Nitin Rajput, and this space is a curated collection of my creative journey, projects, and achievements.
-            <p>Whether you're an employer, a collaborator, or simply an enthusiast exploring, I invite you to delve into my work. Feel free to roam around, explore my projects, 
-                and get a glimpse of what drives my enthusiasm.</p>
-            <p>Thank you for visiting. If you have any questions, collaboration ideas, or just want to say hello, I'm only a <b 
-            className="text-primary-color cursor-pointer" onClick={() => contactMe()}>
-                click away!</b>
-                </p>
+        <div className="ml-4 sm:w-1/2 w-11/12 mt-5"> {t('aboutMePara1')} <p>{t('aboutMePara2')}</p>
+            <p>{t('aboutMePara3')} <b className="text-primary-color cursor-pointer" onClick={() => contactMe()}>
+                {t('clickAway')}!</b>
+            </p>
         </div>
     );
   }

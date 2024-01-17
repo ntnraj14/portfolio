@@ -1,7 +1,9 @@
 {
-    "hi": "Hello world en",
     "welcomeTo": "Welcome to",
     "thrilled": "I'm thrilled to have you here.",
+    "home": "Home",
+    "aboutMe": "About Me",
+    "settings": "Settings",
 
     "startsWith": "Starts with",
     "contains": "Contains",

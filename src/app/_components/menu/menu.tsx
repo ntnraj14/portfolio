@@ -1,17 +1,21 @@
 'use client'
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { usePathname } from 'next/navigation';
 
 import { useEffect, useState } from "react";
 
 import { TabMenu } from "primereact/tabmenu";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Menu() {
 
   const router = useRouter();
   const activePath = usePathname();
-
+  const searchParams = useSearchParams();
+  const currentlLanguage = searchParams.get('lang') === 'fr' ? 'fr' : 'en' ;
+  const { t } = useTranslation('common');
+ 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const pathsIndex = {
@@ -22,24 +26,24 @@ export default function Menu() {
 
   const items = [
     {
-      label: "Home",
+      label: t("home"),
       icon: 'pi pi-home',
       command: () => {
-        router.push('/home');
+        router.push(`/home?lang=${currentlLanguage}`);
       }
     },
     {
-      label: "About Me",
+      label: t("aboutMe"),
       icon: 'pi pi-user',
       command: () => {
-        router.push('/about');
+        router.push(`/about?lang=${currentlLanguage}`);
       }
     },
     {
-      label: "Settings",
+      label: t("settings"),
       icon: 'pi pi-cog',
       command: () => {
-        router.push('/settings')
+        router.push(`/settings?lang=${currentlLanguage}`)
       }
     },
   ];

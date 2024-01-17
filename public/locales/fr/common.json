@@ -1,7 +1,9 @@
 {
-    "hi": "Hello world fr",
     "welcomeTo": "Bienvenue sur",
     "thrilled": "Je suis ravi de vous avoir ici.",
+    "home": "Maison",
+    "aboutMe": "Sur Moi",
+    "settings": "Paramètres",
 
     
     "startsWith": "Commence par",

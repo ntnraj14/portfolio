@@ -2,5 +2,11 @@
     "hi": "Hello world fr",
 
     "english": "Anglais",
-    "french": "Français"
+    "french": "Français",
+    "themeSettingsTitle": "Réglage des thèmes",
+    "themeSettingsSubheading": "Pour une expérience personnalisée, choisissez votre thème préféré. Optez pour un « Thème clair » vibrant pour éclairer votre écran ou plongez dans les profondeurs du « Thème sombre » pour une vue plus confortable.",
+    "languageSettingsTitle": "Paramètres de langue",
+    "languageSettingsSubheading": "Choisir votre langue préférée garantit que vous pouvez naviguer, communiquer et interagir avec le contenu de la manière qui vous convient le mieux.",
+    "lightTheme": "Thème Lumière",
+    "darkTheme": "Thème Sombre"
   }
