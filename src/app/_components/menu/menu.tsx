@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react";
 
 import { TabMenu } from "primereact/tabmenu";
-import useTranslation from "next-translate/useTranslation";
 
 export default function Menu() {
 
@@ -14,7 +13,6 @@ export default function Menu() {
   const activePath = usePathname();
   const searchParams = useSearchParams();
   const currentlLanguage = searchParams.get('lang') === 'fr' ? 'fr' : 'en' ;
-  const { t } = useTranslation('common');
  
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -26,21 +24,21 @@ export default function Menu() {
 
   const items = [
     {
-      label: t("home"),
+      label: currentlLanguage === 'en' ? "Home" : 'Maison',
       icon: 'pi pi-home',
       command: () => {
         router.push(`/home?lang=${currentlLanguage}`);
       }
     },
     {
-      label: t("aboutMe"),
+      label: currentlLanguage === 'en' ? "About Me" : 'Sur Moi',
       icon: 'pi pi-user',
       command: () => {
         router.push(`/about?lang=${currentlLanguage}`);
       }
     },
     {
-      label: t("settings"),
+      label: currentlLanguage === 'en' ? "Settings" : 'Paramètres',
       icon: 'pi pi-cog',
       command: () => {
         router.push(`/settings?lang=${currentlLanguage}`)
@@ -51,7 +49,7 @@ export default function Menu() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     const slicedPath = activePath.slice(1);
-    setActiveIndex(pathsIndex[slicedPath as keyof typeof pathsIndex])
+    setActiveIndex(pathsIndex[slicedPath as keyof typeof pathsIndex]);
   }, [activePath]);
   
   return <TabMenu model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} className="text-sm sm:text-base"/>;

@@ -1,9 +1,10 @@
 // i18n.js
 module.exports = {
   locales: ["en", "fr"],
+  defaultLocale: 'en',
   pages: {
     "*": ["common"],
-    "/": ["home"],
+    "/home": ["home"],
     "/about": ["about"],
     "/settings": ["settings", "common"]
   },
